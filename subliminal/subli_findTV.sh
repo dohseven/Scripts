@@ -105,7 +105,7 @@ fi
 # Create cache folder, some plugins need 'm
 [ -d $CDIR ] || { mkdir -p $CDIR; chmod 775 $CDIR; }
 
-SUBLI_EXE2="$SUBLI_EXE $LANGS $PLUGINS $AGE_cli --cache-dir=$CDIR -v"
+SUBLI_EXE2="$SUBLI_EXE $LANGS $PLUGINS $AGE_cli --cache-dir=$CDIR"
 
 echo "============================================================="
 echo -n `date +%Y-%m-%d\ %H:%M`;
