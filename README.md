@@ -17,4 +17,8 @@ Useful scripts for Synology
 * Search subtitles automatically
 * http://synology.brickman.nl
 
+## pushbullet
+* Notifications through Pushbullet
+* https://docs.pushbullet.com/
+
 
