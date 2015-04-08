@@ -18,7 +18,7 @@ AGE=$2                                      # Age to search for
 PATH_TO_TV=$1                               # Path or file to search
 
 # Directory where to store the log file
-LOG_DIR="/volume1/documents/Tools/subliminal/Logs";
+LOG_DIR=$(dirname $0)"/Logs";
 
 ##########################################
 ##########################################
@@ -36,4 +36,4 @@ if [ ! -d $SUBLI_LOG_DIR ]; then
     mkdir -p $SUBLI_LOG_DIR
 fi
 
-sh /volume1/documents/Tools/subliminal/subli_findTV.sh "$PATH_TO_TV" $AGE >> $SUBLI_LOG_FILE 2>&1
+sh $(dirname $0)/subli_findTV.sh "$PATH_TO_TV" $AGE >> $SUBLI_LOG_FILE 2>&1
