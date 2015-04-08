@@ -27,6 +27,20 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 #
 
+#---------------------------------------------
+#function to notify through pushbullet
+notify_subtitles(){
+    PUSHBULLET_DIR="/volume1/documents_jean/Synology/scripts/pushbullet"
+
+    if [[ ! -d "$PUSHBULLET_DIR" ]]; then
+        echo "Pushbullet script not found"
+	exit
+    fi
+
+    TITLE="Nouveaux fichier de sous-titres trouvé !"
+
+    NOTIFY=`sh $PUSHBULLET_DIR/pushbullet.sh "$TITLE" "$BODY"`
+}
 
 #---------------------------------------------
 #function to set the environment
@@ -153,6 +167,10 @@ add_directory_DB(){
 #---------------------------------------------
 add_file_DB(){
     echo "Adding file $FICH_MEDIA to the database"
+    if [ "$FICH_EXT" = "SRT" ]; then
+	BODY="$FICH_MEDIA"
+	notify_subtitles
+    fi
     synoindex -a "$FICH_MEDIA"
 }
 
