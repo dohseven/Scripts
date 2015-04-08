@@ -75,7 +75,7 @@ lang2=                                              # second language (leave bla
 
 PATH_TO_TV=${1}                                     # Directory/file to process
 #PLUGINS='-s addic7ed -s bierdopje'                  # Set your plugins or leave empty to use all
-PLUGINS=''
+PLUGINS='-s opensubtitles -s subswiki -s subtitulos -s thesubdb -s addic7ed'
                                                     # Available, but may not work: PLUGINS = opensubtitles, bierdopje, subswiki, subtitulos, thesubdb, addic7ed, tvsubtitles
                                                     # example for several plugins: PLUGINS='-s bierdopje -s subtitulos'
 
