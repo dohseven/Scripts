@@ -18,7 +18,7 @@ AGE=$2                                      # Age to search for
 PATH_TO_TV=$1                               # Path or file to search
 
 # Directory where to store the log file
-LOG_DIR=$(dirname $0)"/Logs";
+LOG_DIR="/volume1/documents/logs/subliminal";
 
 ##########################################
 ##########################################

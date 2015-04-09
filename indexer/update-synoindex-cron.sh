@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Directory where to store the log file
-LOG_DIR=$(dirname $0)"/Logs";
+LOG_DIR="/volume1/documents/logs/indexer";
 if [ ! -d $LOG_DIR ]; then
     mkdir -p $LOG_DIR
 fi
