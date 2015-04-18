@@ -37,7 +37,7 @@ notify_subtitles(){
 	exit
     fi
 
-    TITLE="Nouveaux fichier de sous-titres trouvé !"
+    TITLE="Nouveau fichier de sous-titres trouvé !"
 
     NOTIFY=`sh $PUSHBULLET_DIR/pushbullet.sh "$TITLE" "$BODY"`
 }
