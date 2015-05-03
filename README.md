@@ -2,6 +2,11 @@
 
 Useful scripts for Synology
 
+## configbackup
+
+* Synology configuration backup as *.dss
+* Creates file in dedicated directory
+
 ## crontab
 
 * Crontab editor
