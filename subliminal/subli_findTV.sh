@@ -66,8 +66,9 @@ SUBLI_EXE=/usr/local/subliminal/env/bin/subliminal   # Path to Subliminal (Syno 
 #SUBLI_EXE=/opt/local/bin/subliminal                 # Path to Subliminal (Runned the setup.py) otherwise
 #SUBLI_EXE=/opt/bin/subliminal                       # Path to Subliminal (Runned the setup.py)
 
-CDIR=/volume1/@appstore/subliminal/cache            # needs to be somewhere, doesn't really matter where, is used to store some things in (e.g. BierDopje.nl depends on it)
-RUN_AS=subliminal                                   # User that runs the script
+# Cache file, needs to be somewhere, doesn't really matter where, is used to store some things in (e.g. BierDopje.nl depends on it)
+CFILE=/volume1/documents/logs/subliminal/cache/subliminal.cache.dbm
+RUN_AS=Jean                                         # User that runs the script
 
 AGE=${2}                                            # set age in days of video files to look subs for
 lang1=en                                            # set first language (ISO 639-1)
@@ -75,7 +76,8 @@ lang2=                                              # second language (leave bla
 
 PATH_TO_TV=${1}                                     # Directory/file to process
 #PLUGINS='-s addic7ed -s bierdopje'                  # Set your plugins or leave empty to use all
-PLUGINS='-s opensubtitles -s subswiki -s subtitulos -s thesubdb -s addic7ed'
+#PLUGINS='-s opensubtitles -s subswiki -s subtitulos -s thesubdb -s addic7ed'
+PLUGINS='-p addic7ed -p opensubtitles'
                                                     # Available, but may not work: PLUGINS = opensubtitles, bierdopje, subswiki, subtitulos, thesubdb, addic7ed, tvsubtitles
                                                     # example for several plugins: PLUGINS='-s bierdopje -s subtitulos'
 
@@ -105,7 +107,7 @@ fi
 # Create cache folder, some plugins need 'm
 [ -d $CDIR ] || { mkdir -p $CDIR; chmod 775 $CDIR; }
 
-SUBLI_EXE2="$SUBLI_EXE $LANGS $PLUGINS $AGE_cli --cache-dir=$CDIR"
+SUBLI_EXE2="$SUBLI_EXE $LANGS $PLUGINS $AGE_cli -c=$CFILE"
 
 echo "============================================================="
 echo -n `date +%Y-%m-%d\ %H:%M`;
@@ -119,7 +121,6 @@ echo -n `date +%Y-%m-%d\ %H:%M`;
     echo "Subliminal is not installed, please install it using python-setuptools and pip install subliminal";
     exit 1;}
 
-    
 # Check if file/directory is specified
 [ -n "$PATH_TO_TV" ] || {
     echo -e "No file or directory specified!\n\n=============================================================";
