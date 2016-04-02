@@ -171,8 +171,8 @@ add_directory_DB(){
 add_file_DB(){
     echo "Adding file $FICH_MEDIA to the database"
     if [ "$FICH_EXT" = "SRT" ]; then
-    BODY="$FICH_MEDIA"
-    notify_subtitles
+        BODY=$(basename "$FICH_MEDIA")
+        notify_subtitles
     fi
     synoindex -a "$FICH_MEDIA"
 }
@@ -208,7 +208,7 @@ treat_files(){
     if [ "$EXT_RETVAL" == 1 ]; then
         search_file_DB
         SEARCH_RETVAL=$?
-    echo "Status: $SEARCH_RETVAL"
+        echo "Status: $SEARCH_RETVAL"
 
         if [ "$SEARCH_RETVAL" == 0 ]; then
             treat_directories
