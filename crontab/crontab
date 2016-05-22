@@ -51,9 +51,10 @@ check_new () {
     cat /etc/crontab | \
     while read LINE; do
       # Find out if empty or the first character is a #
-      echo "${LINE}" | awk '{print $1}' | egrep "^#|^$" >/dev/null 2>&1
+	  # New Syno version: 2 lines starting with MAILTO and PATH
+      echo "${LINE}" | awk '{print $1}' | egrep "^#|^$|^MAILTO|^PATH" >/dev/null 2>&1
       if [[ $? = 0 ]]; then
-        # Copy over comment/blank lines exactly
+        # Copy over comment/blank/syno lines exactly
         echo "$LINE"
       else
         unset IFS
