@@ -115,6 +115,8 @@ search_directory_DB(){
 
     #replace "'" with "\'"
     PATH_MEDIA_SQL=${PATH_MEDIA_1//"'"/"\'"}
+    #replace " " with "\ "
+    PATH_MEDIA_SQL=${PATH_MEDIA_SQL//" "/"\ "}
     TOTAL=0
     FIRST=1
     CREATE_DIR=0
@@ -132,7 +134,7 @@ search_directory_DB(){
         fi
 
         PATH_MEDIA_SQL=${PATH_MEDIA_SQL%/*}
-        if [ -z $PATH_MEDIA_SQL ]; then
+        if [ -z "$PATH_MEDIA_SQL" ]; then
             break
         fi
     done
