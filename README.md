@@ -26,4 +26,7 @@ Useful scripts for Synology
 * Notifications through Pushbullet
 * https://docs.pushbullet.com/
 
+# Notes for Synology
 
+## Freebox Player
+Activate subtitles by changing profile to "LG Player" in DMA compatibility tab of Media server application.
