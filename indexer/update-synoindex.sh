@@ -29,6 +29,7 @@
 
 #---------------------------------------------
 #function to notify through pushbullet
+#---------------------------------------------
 notify_subtitles(){
     PUSHBULLET_DIR="/volume1/documents_jean/Synology/scripts/pushbullet"
 
@@ -173,6 +174,7 @@ add_directory_DB(){
 add_file_DB(){
     echo "Adding file $FICH_MEDIA to the database"
     if [ "$FICH_EXT" = "SRT" ]; then
+        REMOVE_BOM=`sed -i '1 s/^ďťż//' "$FICH_MEDIA"`
         BODY=$(basename "$FICH_MEDIA")
         notify_subtitles
     fi
