@@ -119,18 +119,13 @@ search_directory_DB(){
     #replace " " with "\ "
     PATH_MEDIA_SQL=${PATH_MEDIA_SQL//" "/"\ "}
     TOTAL=0
-    FIRST=1
     CREATE_DIR=0
 
     while : ; do
         TOTAL=`$PSQL_PATH mediaserver -U postgres -tA -c "select count(1) from directory where lower(path) like '%$PATH_MEDIA_SQL%'"`
 
         if [ "$TOTAL" = 0 ]; then
-            if [ "$FIRST" = 1 ]; then
-                FIRST=0
-            else
-                PATH_MEDIA_1=${PATH_MEDIA_1%/*}
-            fi
+            PATH_MEDIA_1=${PATH_MEDIA_1%/*}
             CREATE_DIR=1
         fi
 
