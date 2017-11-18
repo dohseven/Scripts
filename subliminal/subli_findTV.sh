@@ -69,17 +69,13 @@ SUBLI_EXE=/usr/local/subliminal/env/bin/subliminal   # Path to Subliminal (Syno 
 # Cache file, needs to be somewhere, doesn't really matter where, is used to store some things in (e.g. BierDopje.nl depends on it)
 CFILE=/volume1/documents/logs/subliminal/cache/subliminal.cache.dbm
 RUN_AS=Jean                                         # User that runs the script
-
 AGE=${2}                                            # set age in days of video files to look subs for
 lang1=en                                            # set first language (ISO 639-1)
 lang2=                                              # second language (leave blank if not needed) (ISO 639-1)
-
 PATH_TO_TV=${1}                                     # Directory/file to process
-#PLUGINS='-s addic7ed -s bierdopje'                  # Set your plugins or leave empty to use all
-#PLUGINS='-s opensubtitles -s subswiki -s subtitulos -s thesubdb -s addic7ed'
-PLUGINS='-p addic7ed -p opensubtitles'
-                                                    # Available, but may not work: PLUGINS = opensubtitles, bierdopje, subswiki, subtitulos, thesubdb, addic7ed, tvsubtitles
-                                                    # example for several plugins: PLUGINS='-s bierdopje -s subtitulos'
+# Set subtitles providers, to choose in thesubdb, opensubtitles, addic7ed, podnapisi, tvsubtitles
+PROVIDERS='addic7ed opensubtitles thesubdb podnapisi tvsubtitles'
+EXTRA_OPTIONS=''                                    # Set your extra options
 
 #################################
 ## Do not edit below this line ##
@@ -107,16 +103,13 @@ fi
 # Create cache folder, some plugins need 'm
 [ -d $CDIR ] || { mkdir -p $CDIR; chmod 775 $CDIR; }
 
-SUBLI_EXE2="$SUBLI_EXE $LANGS $PLUGINS $AGE_cli -c=$CFILE"
+SUBLI_EXE2="$SUBLI_EXE $LANGS -p $PROVIDERS $AGE_cli -c=$CFILE $EXTRA_OPTIONS"
 
 echo "============================================================="
 echo -n `date +%Y-%m-%d\ %H:%M`;
 [ -n "$AGE" ] && echo -e ": Find $LANGS subtitles for $PATH_TO_TV with age $AGE days\n" || echo -e ": Find $LANGS subtitles for $PATH_TO_TV\n"
 
 # Check if program is installed
-# [ test -x $SUBLI_EXE || {
-    # echo "Subliminal is not installed!";
-    # exit 1;}
 [ -e $SUBLI_EXE ] || {
     echo "Subliminal is not installed, please install it using python-setuptools and pip install subliminal";
     exit 1;}
