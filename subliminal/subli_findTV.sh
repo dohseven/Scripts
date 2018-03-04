@@ -75,7 +75,7 @@ lang2=                                              # second language (leave bla
 PATH_TO_TV=${1}                                     # Directory/file to process
 # Set subtitles providers, to choose in thesubdb, opensubtitles, addic7ed, podnapisi, tvsubtitles
 PROVIDERS='addic7ed opensubtitles thesubdb podnapisi tvsubtitles'
-EXTRA_OPTIONS=''                                    # Set your extra options
+EXTRA_OPTIONS='-m 40'                               # Set your extra options
 
 #################################
 ## Do not edit below this line ##
