@@ -1,11 +1,11 @@
-#!bin/sh
+#! /bin/sh
 #
 # Utility to send push events through Pushbullet
 # Next to the script, you should have a "config"
 # containing:
-# - a token.key file, with your account token 
+# - a token.key file, with your account token
 #   on first line
-# - a device.id file, with your device id 
+# - a device.id file, with your device id
 #   on first line
 #   (to get it: curl --header 'Authorization: Bearer <your_access_token_here>' -X GET https://api.pushbullet.com/v2/devices)
 #
@@ -21,17 +21,17 @@
 #------------------------------------------------
 get_token(){
     CONFIG_DIR=$(dirname $0)"/config"
-    
+
     if [ ! -d "$CONFIG_DIR" ]; then
         echo "Unable to find config directory"
-	exit 1
+    exit 1
     fi
-    
+
     TOKEN_FILE="$CONFIG_DIR/token.key"
 
     if [ ! -f "$TOKEN_FILE" ]; then
         echo "Unable to find token file"
-	exit 2
+    exit 2
     fi
 
     read TOKEN < $TOKEN_FILE
@@ -42,21 +42,21 @@ get_token(){
 #------------------------------------------------
 get_device(){
     CONFIG_DIR=$(dirname $0)"/config"
-    
+
     if [ ! -d "$CONFIG_DIR" ]; then
         echo "Unable to find config directory"
-	exit 1
+    exit 1
     fi
-    
+
     DEVICE_FILE="$CONFIG_DIR/device.id"
 
     if [ ! -f "$DEVICE_FILE" ]; then
         echo "Unable to find device file"
-	exit 2
+    exit 2
     fi
 
     read DEVICE < $DEVICE_FILE
-}  
+}
 
 #------------------------------------------------
 # Main program
